@@ -22,9 +22,49 @@ namespace ExposureDiary
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            var manageCameras = FindViewById<Button>(Resource.Id.ManageCamerasBtn);
+            manageCameras.Click += delegate 
+            {
+                StartActivity(typeof(ManageCamerasActivity));
+            };
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            var manageFilms = FindViewById<Button>(Resource.Id.ManageFilmsBtn);
+            manageFilms.Click += delegate
+            {
+                StartActivity(typeof(ManageFilmsActivity));
+            };
+
+        }
+    }
+
+    [Activity(Label = "ManageCameras")]
+    public class ManageCamerasActivity : Activity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            SetContentView(Resource.Layout.ManageCameras);            
+        }
+    }
+
+    [Activity(Label = "AddCamera")]
+    public class AddCameraActivity : Activity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+        }
+    }
+
+    [Activity(Label = "ManageFilms")]
+    public class ManageFilmsActivity : Activity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            SetContentView(Resource.Layout.ManageFilms);
         }
     }
 }
